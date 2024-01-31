@@ -2,20 +2,28 @@ if exists("b:current_syntax")
   finish
 endif
 
-syn match csvField1 /[^,]*,\?/ display           nextgroup=csvField2
-syn match csvField2 /[^,]*,\?/ display contained nextgroup=csvField3
-syn match csvField3 /[^,]*,\?/ display contained nextgroup=csvField4
-syn match csvField4 /[^,]*,\?/ display contained nextgroup=csvField5
-syn match csvField5 /[^,]*,\?/ display contained nextgroup=csvField6
-syn match csvField6 /[^,]*,\?/ display contained nextgroup=csvField7
-syn match csvField7 /[^,]*,\?/ display contained
+syntax match column7 /.\{-}\(,\|$\)/ nextgroup=escaped_column0,column0
+syntax match escaped_column7 / *"\([^"]*""\)*[^"]*" *\(,\|$\)/ nextgroup=escaped_column0,column0
 
-hi def link csvField1 Normal
-hi def link csvField2 Constant
-hi def link csvField3 Special
-hi def link csvField4 Identifier
-hi def link csvField5 Statement
-hi def link csvField6 PreProc
-hi def link csvField7 Type
+syntax match column6 /.\{-}\(,\|$\)/ nextgroup=escaped_column7,column7
+syntax match escaped_column6 / *"\([^"]*""\)*[^"]*" *\(,\|$\)/ nextgroup=escaped_column7,column7
+
+syntax match column5 /.\{-}\(,\|$\)/ nextgroup=escaped_column6,column6
+syntax match escaped_column5 / *"\([^"]*""\)*[^"]*" *\(,\|$\)/ nextgroup=escaped_column6,column6
+
+syntax match column4 /.\{-}\(,\|$\)/ nextgroup=escaped_column5,column5
+syntax match escaped_column4 / *"\([^"]*""\)*[^"]*" *\(,\|$\)/ nextgroup=escaped_column5,column5
+
+syntax match column3 /.\{-}\(,\|$\)/ nextgroup=escaped_column4,column4
+syntax match escaped_column3 / *"\([^"]*""\)*[^"]*" *\(,\|$\)/ nextgroup=escaped_column4,column4
+
+syntax match column2 /.\{-}\(,\|$\)/ nextgroup=escaped_column3,column3
+syntax match escaped_column2 / *"\([^"]*""\)*[^"]*" *\(,\|$\)/ nextgroup=escaped_column3,column3
+
+syntax match column1 /.\{-}\(,\|$\)/ nextgroup=escaped_column2,column2
+syntax match escaped_column1 / *"\([^"]*""\)*[^"]*" *\(,\|$\)/ nextgroup=escaped_column2,column2
+
+syntax match column0 /.\{-}\(,\|$\)/ nextgroup=escaped_column1,column1
+syntax match escaped_column0 / *"\([^"]*""\)*[^"]*" *\(,\|$\)/ nextgroup=escaped_column1,column1
 
 let b:current_syntax = "csv"
